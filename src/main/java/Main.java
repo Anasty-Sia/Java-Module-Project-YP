@@ -1,13 +1,14 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public static void main(String[] args) {
 
-    ArrayList<Car> carsList = new ArrayList<>();
     Race races = new Race();
     String name;
     int speed;
+    final int minSpeed = 0;
+    final int maxSpeed = 250;
     Scanner scanner = new Scanner(System.in);
+
     for (int i = 0; i <= 2; i++) {
         int j = i + 1;
         System.out.println("Введите название " + j + " машины:");
@@ -21,9 +22,9 @@ public static void main(String[] args) {
             if (scanner.hasNextInt()) {
 
                 speed = scanner.nextInt();
-                if (0 < speed && speed <= 250) {
-                    carsList.add(new Car(name, speed));
-                    races.setWinner(carsList, i);
+                if (minSpeed < speed && speed <= maxSpeed) {
+                    Car cars = new Car(name, speed);
+                    races.winner(cars);
                     break;
                 } else {
                     System.out.println("Введите другую скорость машины от 0 до 250.");

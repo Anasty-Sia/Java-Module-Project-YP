@@ -1,32 +1,21 @@
-import java.util.ArrayList;
-
 public class Race {
-    int timeRace = 24;
-    String winner;
-    int winnerSpeed;
-    int distance;
-    int comparison;
-
-    public void setWinner(ArrayList<Car> carsList, int index) {
-        distance = timeRace * carsList.get(index).speed;
-
-        if (index == 0) {
-            winner = carsList.get(0).name;
-            winnerSpeed = carsList.get(0).speed;
-        } else {
-            comparison = timeRace * winnerSpeed;
-            if (distance > comparison) {
-                winner = carsList.get(index).name;
-                winnerSpeed = carsList.get(index).speed;
-            }
-        }
-    }
+    private static final int TIME_RACE = 24;
+    private String winner;
+    private int winnerSpeed;
+    private int distance;
+    private int comparison;
 
     public void getWinner() {
         System.out.println("Самая быстрая машина: " + winner);
     }
+
+    public void winner(Car cars) {
+        distance = TIME_RACE * cars.speed;
+        comparison = winnerSpeed * TIME_RACE;
+        if (distance > comparison) {
+            winnerSpeed = cars.speed;
+            winner = cars.name;
+        }
+    }
+
 }
-
-
-
-
